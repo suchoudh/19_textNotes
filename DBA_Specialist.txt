@@ -1,0 +1,21 @@
+Usaually you find commodity DBAs there is no job for them in future. 
+
+Next is "The Specialist DBA!!!"
+
+In the past many folks learn basic Database software installation and configuration claim to be a DBA, These guys are so limited with installation and configuration with some limited involvement in user account creation, password management and space allocation for schema / users. Now these are can be automated with DevOps tools or if you are on Amazon RDS most of the limited scope DBA activities are so well taken care of but can you be a serious corporation without hiring professional DBA ? Hmm.... If yes, You must read this post and I am sure in the end you will contact your recruiter to hire a DBA full-time / contract immediately and if no, You will enjoy reading this post and will be so proud about your decision of having a full-time / consulting DBA in your company.
+
+You can only automate the well planned / scheduled activities with DevOps, RDS kind of platform but what about Performance Optimization of your Database System ? Writing High Performance SQL, Optimal Indexing and Managing Locks / Wait Events, What about these, Can you Automate them ? Surely not, Architecting and Developing High Performance Database Applications is a very specialized expertize, This involves deep understanding of Database Architecture, Internals, Optimizer Knowledge, High Performance SQL Patterns, Efficient Indexing Methods and Managing Concurrency / Locks / WaitEvents and you definitely need seasoned Database Technologies Professional to deliver Optimal and Scalable Database Platforms !!
+
+The future of Specialist DBA is bright, Such DBAs are not just limited to your Operational Functions, They are involved in your Strategic Decision making like Technology Architecture and Engineering, These Specialist DBAs build / own Optimal SQL, Efficient Indexing and Concurrency / Isolation governance across the Database Tier of your business. I have come across Database Architecture and Engineering of several high profile Internet Application Platforms built by non professional dedicated DBAs, They will be often over / under Indexed with sub-optimal SQL and unaddressed concurrency / isolation level, This results in serious Performance and Scalability of the entire platform and eventually resulting negative business impact affecting experience of end customer (nobody want to wait 10 seconds for every page load !!! )..
+
+What is recommended to become a successful Specialist DBA ?
+
+Have deep understanding on Architecture and Internals of underlying Database Platform
+Participate actively in every decision making because business is data and you are delivering infrastructure for data movement here, You are solely accountable for Optimal, Scalable, Highly Available and Secured Database Infrastructure 
+Be conscious about cost of SQL and Indexes for the application, Over indexing and complex SQL in production is never cool !!!
+Automate all non core activities of your day like installation, configuration, user management etc. !!!       
+Conclusion  
+
+The computers and robots can never replace human expertize or specialized skills, They all exist just to simplify our activities and increasing efficiency. Believe in automation and be adaptable because it makes you more productive professionally. Think about how you can contribute to the business success and customer satisfaction, High Performance Database System significantly influence the end customer satisfaction, Eventually customer success is the only goal for every business in this planet, Good luck !!  
+
+

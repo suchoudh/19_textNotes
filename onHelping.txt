@@ -1,0 +1,45 @@
++++++++++++++++++++++++++++++++
+This is about Helping.. 
+Assisting 	Enabling 	Offering
+Aiding 		Explaining 	Prescribing
+Advising	Facilitating 	Recommending
+Care Giving	Giving		Showing
+Catalyzing	Guiding		Steering
+Coaching	Handing		Supplying
+Consulting	Improving	Supporting
+Counseling	Mentoring	Teaching
+Doing for 	Ministering	Telling
++++++++++++++++++++++++++++++++++++++ 
+
+
+
+#!/bin/ksh
+#######################################################################
+##   File                : Readme log file 
+##   Creation Date       : 16 September 2018
+##   Last Updated Date   : 16 Sept 2018
+##   Author              : Sunil Choudhary 
+##   Remarks             : readme file for today 
+##                              1) thing 1 
+##                              2) Helping book by Edgar H schein  
+##  ###################################################################
+mv readme.txt readme_$Today.txt
+cat $myHdr >> readme_$Today.txt
+chmod 664 readme_$Today.txt 
+#--------------------------------------------------------------------
+#. $myHdr `
+#java -jar "/home/rahu/ThinkingClock/ThinkingClock.jar"
+# git status
+# git pull ...
+# git push origin master
+# git push --force origin master
+=======================================================================
+# vi $myHDR - this header file 
+# vi $wilinG- what i learnt after 3.5 years in Govt 
+
+==========================
+
+
+
+
+

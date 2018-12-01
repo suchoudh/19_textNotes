@@ -1,0 +1,88 @@
+https://engineering.linkedin.com/blog/2018/11/coding-conversations--the-perfect-storm--that-brought-down-linke
+
+Coding Conversations: The “Perfect Storm" that Brought Down LinkedIn.com
+Katie Shannon
+November 16, 2018
+
+    inShare
+
+Editor’s Note: This article originally appeared as a guest post on VentureBeat titled “What I learned by bringing down LinkedIn.com.” Reprinted here in full, the post tells the story of how Katie accidentally crashed LinkedIn.com. After the immediate problem was resolved, the incident resulted in sitewide technical improvements and turned out to be a growth opportunity for Katie both professionally and personally.
+
+
+Three years ago, I joined LinkedIn as a 22-year-old fresh out of college after graduating with a computer science degree. Sometime in my last year at school, a recruiter reached out to me on my LinkedIn profile for something called Site Reliability Engineering (SRE). I had no clue what that entailed, but I decided to give it a shot. I went through the interview process and came out with a brand new job in my pocket. I knew I’d enjoy working at a company like LinkedIn, but what in the world was SRE, and how good was I going to be at it?
+What is SRE?
+
+While SREs have been around for several years now, there are still many who are unfamiliar with the role; just as I was when graduating college. At LinkedIn, we like to define SRE by three core tenets:
+
+    Site up and secure: We need to make sure the site is working as expected and that our members’ data is safe.
+
+    Empower developer ownership: It takes a village to ensure LinkedIn’s code is written reliably and that we architect our systems in a scalable way.
+
+    Operations is an engineering problem: People tend to think of operations as very manual, button pushing work. But LinkedIn strives to automate away the day-to-day operational problems we come across.
+
+All these definitions and core tenets are nice, but what did SRE actually mean to me? There were a couple of things I found out pretty quickly that honestly intimidated me. First, with “Site up and secure,” how do we ensure the site is constantly working? We have on-call engineers who are able to solve site issues and are available 24/7 for a week straight. I would soon have to fill that on-call role for my team. If something broke at 3 a.m., I would get a phone call and be responsible for fixing the issue in a timely manner by myself. Never having been in a situation like that before, I was extremely hesitant to go on-call. LinkedIn also has a large amount of custom tooling that I’ve never used before, and the amount of knowledge needed to operate those tools was intimidating.
+
+In order to empower developer ownership, I had to have a good relationship with my teammates and my developers. When I looked around my first team, I was definitely the outlier. There were few people my age in SRE, few people who were graduates with computer science degrees, no one had my lack of experience, and no women. When I looked at my peers who graduated with me, none of them went into SRE roles; most went into software development. That left me wondering where I belonged in this picture, and why I was in a role that I had no experience in and where everyone was different from me. Finally, something clicked. Honoring the “operations is an engineering problem” tenant meant that I was able to write code to solve engineering problems, and I was definitely comfortable writing code.
+
+After a few months at LinkedIn, I was starting to feel a lot more comfortable in my role as an SRE on the feed team. My team was responsible for mobile applications and the desktop homepage, so we’d get a lot of traffic from our members. I dove right into learning all the custom tooling and started feeling really comfortable using it. To my surprise, I was finding myself very effective during on-call shifts. During my first ever on-call experience, I diagnosed an issue and was able to fix it. I still have a screenshot of a chat saved where the Vice President of SRE told me I did a good job figuring out the issue.
+
+As I started to gain confidence, I was less self-conscious of my lack of experience compared to all my coworkers, and I was able to foster great working relationships with them. I continued coding automation, and I was able to help deploy a brand new mobile API to production, called Voyager. This was a complete overhaul of our mobile applications and it was one of the first pieces of tangible evidence of my effectiveness as an SRE at LinkedIn. I could show my parents and my friends the new application and say, “Look, I helped do that!” I was really starting to feel like I belonged. That is, until, the incident.
+The incident
+
+After about a year at LinkedIn, a developer on the Voyager team asked me to deploy it to production. At the time, this type of ask was very normal. As an SRE I got to know the ins and outs of our deployment tooling, and I could help out the developer easily enough. As I was deploying the code to production, we realized that the latest code caused the profile page on the mobile application to break. Since being able to view other people’s profiles is a pretty big use case of LinkedIn, I wanted to remediate this issue as soon as I could. I issued a custom rollback command to get the bad code out of production. After the rollback was successful, I looked at the health checks for Voyager and everything seemed healthy.
+
+SREs have a saying, “every day is Monday in operations,” which means our systems are in a constant state of change and our teams are on call 24/7 to address any site issues that do pop up. This day was a perfect example as we started seeing that no one was able to reach the LinkedIn homepage. Looking into the issue further, no one was able to reach any URL with linkedin.com in it. We soon realized that the traffic tier was down. Traffic is responsible for taking a request from a browser or mobile application and routing it to the correct backend server. Since it was down, no routing could take place and no requests were able to be completed. Although this issue definitely affected the services my team owned, we did not own the traffic tier, so we took a step back and let them debug.
+
+After about 20 minutes of the traffic team debugging the issue, I noticed Voyager was acting pretty strangely. The health checks were returning healthy but only for a few seconds before switching to unhealthy. Normally it’s one or the other, not wavering back and forth between the two states. I logged onto the Voyager hosts and realized that Voyager was completely overloaded and unresponsive — and that it was responsible for bring down the entire traffic tier.
+
+How did an API that only serves data to mobile applications take down the entire site? Well, the traffic tier has a trust agreement between itself and all other services at LinkedIn. If a service says that it’s healthy, the traffic tier trusts that it can give that service a connection and expects to get that connection back in a reasonable amount of time. However, Voyager was saying it was healthy when in reality it wasn’t, so when traffic gave it a connection, it was never able to give it back and ended up hoarding the entire finite pool of connections that traffic had to give. All of traffic’s eggs were in Voyager’s basket, and Voyager was not in any state to give those eggs back, rendering the traffic tier useless.
+
+We knew we had to restart Voyager in order to get all the connections back to traffic tier. After issuing a restart command, the deployment tool confirmed that the restart was successful, but in reality, the tooling wasn’t able to restart the service. Since we couldn’t trust our deployment tooling to accurately report what was happening, we had to manually log into every Voyager host and kill the service that way. Finally, the traffic tier was brought back up and we were remediated.
+
+Hundreds of LinkedIn engineers were left with the question, “How did that just happen?” That site issue was the worst I’ve ever seen at LinkedIn in my three-and-a-half years at the company. No one was able to reach any URL that had linkedin.com in it for 1 hour and 12 minutes, resulting in many of our millions of members unable to reach the site. After a few hours of investigation, we realized what the root cause of the issue was: me.
+
+Earlier that day, when I issued a rollback command, my number one priority was to get the broken profile code out of production as soon as possible. In order to do that, I overrode the rollback command to make it finish faster. Normally, deployments go out in 10 percent batches — so if there were 100 Voyager hosts, only 10 would get deployed to at a time; then once those finished, the next 10 would get deployed to, and so on. I overrode the command and set it to go in 50 percent batches, meaning half the hosts were down at a time. The other half of hosts that were left up were not able to handle all the traffic, became overloaded, spun out into a completely unreachable and overloaded state, and acted as the catalyst to the perfect storm that brought the rest of the site down.
+The perfect storm
+
+I made a mistake by issuing that rollback command. I was stressed out that I had introduced broken code into production, and I let that stress affect my decision making. However, if I had run that same rollback command any other day, it would have resulted in five minutes of downtime for the iPhone and Android apps only. It definitely takes a lot more than that to actually take the site down, but unfortunately there were a lot of other external factors that built up to cause such a large-scale issue.
+
+First, we have tooling that’s meant to catch issues in code before it gets deployed out to production. That tooling actually caught the ongoing issue, but because it had been returning unreliable results recently, the developer decided to bypass it and deploy to production anyway. Then, once the code was in production, our deployment tooling was reporting that it was able to successfully restart Voyager, when in reality it couldn’t touch it. Overall, our tooling ended up hurting us more than it helped that day.
+
+As I mentioned, Voyager was pretty new at LinkedIn at the time. We were using a brand-new third-party framework that wasn’t in use many other places at LinkedIn. As it turns out, that framework had two critical bugs that exacerbated the issue. First, when the application got into an overloaded state like Voyager did that day, health checks would stop working properly. This is why Voyager was reporting healthy when it was anything but, and how it ended up consuming all of traffic’s connections. Also, there was a bug where if the application was in an overloaded state, the stop and start commands wouldn’t work but would report that they worked. That’s why tooling reported that the restarts were successful when in reality they weren’t. The incident uncovered failure issues that we hadn’t previously considered and that weren’t previously feasible, but as the complexity of our stack changed with our increasing need for scale, this was no longer the case.
+
+Finally, the hour and 12 minutes that this issue lasted could have been drastically reduced if there wasn’t misdirected troubleshooting earlier that day, such as when my team took a step back and let the traffic team try to diagnose the issue.
+The aftermath
+
+Coming to terms with the fact that I was the one who pushed the big red button that caused the site to go down was tough. I had just starting to gain my confidence, and it felt like I hit a wall going 100 mph. Luckily, the company culture is to attack the problem, not the person. Everyone understood that if one person can bring down the site, there must be a lot of other issues involved. So instead of placing the blame on me, our engineering organization made some changes to prevent that from ever happening again. First came a change moratorium on the entire website. No code deployments were allowed to go out unless it was for a critical fix for weeks after. Then followed months’ worth of engineering effort to make our site more resilient. We also had to enact a complete reevaluation of our tooling, since it did more to hurt us that day than to help us.
+
+We ended up enacting a code yellow on two of our tooling systems as a result. A code yellow is an internal declaration that “something is wrong, and we need to move forward with caution.” ​All engineering efforts on the team that declared a code yellow are spent fixing the problem instead of developing new features. It’s an open and honest way to fix problems as opposed to sweeping them under the rug. As a result of these code yellows, we have a new deployment system that’s much easier to use and works much more reliably.
+
+The experience changed me personally, too, of course. Initially I was extremely down on myself. I didn’t know how I’d face my coworkers and still be respected after causing the worst site issue I’ve personally ever seen at the company. But the team supported me, and I’ve learned to be calmer in incident management situations. Before this event, I would get flustered and stressed out when trying to solve a site issue. I realize now that taking one more minute to ensure I have all the facts is much better than acting quickly and perhaps causing a larger site outage. If I had stopped to take a breath before issuing the rollback, it’s possible I would have given a second thought to issuing such a large batch size. Since this incident, I’ve learned how to keep my composure during stressful site issues.
+
+I also sought out more community at work in the wake of the incident — specifically other women in SRE who I could talk to about my doubts and concerns. That has since evolved into the Women in SRE (WiSRE) group we have at LinkedIn today. Having a group of women and seeing myself fit in somewhere really solidified the fact that I do belong in the SRE organization.
+
+Finally, I learned that breaking things can be beneficial sometimes. A large number of technical changes occurred because of this site issue, which makes LinkedIn much more reliable today.  I’ve taken this idea to heart and started working on a new SRE team at LinkedIn called Waterbear. This team intentionally introduces failures into our applications to observe how they react, then uses that information to make them more resilient. I’m extremely excited and grateful that I can take one of my lowest moments at work and turn it into a passion for resilience.
+Acknowledgments
+
+Special thanks to the members of my SRE team at the time for making me feel better after causing this incident, the women and allies of WiSRE, the LinkedIn Tools team for working tirelessly to fix the problems I unearthed, and the Waterbear team for welcoming me to my next role.
+Topics
+
+    engineering culture, SRE 
+
+    Related story
+    Coding Conversations: Finding The Right Fit
+
+    Related story
+    Project STAR*: Streamlining Our On-Call Process
+
+    Back to topLinkedIn.com
+
+    Blog Data Open Source Jobs Women in Tech 
+
+    LinkedIn Corporation © 2018
+    About Cookie Policy Privacy Policy User Agreement a
+
+
+
+
+

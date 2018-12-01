@@ -1,0 +1,49 @@
+No credible data on government to base output on. 
+==================================================
+https://www.thehindubusinessline.com/opinion/the-jobs-debate-lost-in-translation/article25486933.ece
+
+
+Absence of credible data on jobs is a major stumbling block in analysing the Centre’s record on job creation
+As the term of the incumbent government which came to power on the promise of creating millions of jobs for its young workforce nears completion, it is time to evaluate how the government performed on its word.
+
+Unfortunately, much of the debate on the employment performance of the government has been mired in ambiguity due to the absence of credible employment data. Following the recommendations of a Task Force set up by the government to review India’s employment data architecture, the household surveys conducted by the National Sample Survey Organisation (NSSO) which have been the main source of employment data in India since the seventies have been discontinued.
+
+The last such survey was conducted in 2011-12. Concomitantly, another household survey undertaken by the Labour Bureau since 2009, comparable in sample size to the NSSO’s, has also been shelved after the 2015-16 round.
+
+These two household surveys are in the process of being replaced by the Periodic Labour Force Survey (PLFS) which will produce annual employment estimates at the national and rural level, and quarterly estimates in urban areas. While the introduction of the PLFS is driven by the well meaning objective of producing frequent employment estimates, the results of this survey are unlikely to be out before the elections in 2019 raising several questions about employment trends in the interim period.
+
+The government has recently started to use administrative data relating to payrolls, in particular the Employees’ Provident Fund Organisation (EPFO), to provide high frequency real time information on the labour market. The release of payroll data has spawned considerable debate as its interpretation and analysis are fraught with challenges.
+
+Based on the most recently released payroll series, it has been argued that 7.3 million formal jobs were added in the economy between September 2017 and August 2018. Several economists have doubted such claims of a surge in job growth and much discussion has happened on whether a new enrollment on the EPFO database does indeed reflect creation of a new formal job.
+
+Pitfalls of EPFO data
+In fact, India’s newly appointed chief statistician has also said that the EPFO numbers are at best a measure of formalisation of workforce, and do not represent job creation. Despite this clarification, several doubts persist and we need to be cautious in interpreting these numbers for multiple reasons.
+
+The last few years have seen a concerted effort to increase enrollment on the EPFO database. In August 2016, the government launched the Pradhan Mantri Rojgar Protsahan Yojana (PMRPY) to incentivise creation of new jobs in the formal sector by paying the EPF contribution of the employer for all new employees enrolling in EPFO for the first three years of their employment.
+
+The objective of this scheme is not only to encourage employers to recruit unemployed persons, but also to bring informal employees into the books. Further, the EPFO’s efforts to ensure that contract workers who are deprived of their PF benefits receive their dues has resulted in increased enrollment of contract workers on the database.
+
+Additionally, the implementation of GST has given an impetus to formalisation boosting the enrollment numbers. Such attempts to increase the outreach of the EPFO database suggest that we need to be more prudent in identifying whether additions to the databases truly represent new formal jobs or are simply capturing better enrollment of existing employed individuals.
+
+Interestingly, the EFPO data series has been released six times so far, and each time, the previously released estimates have been revised. For instance, in the data released in October 2018, the payroll numbers for last year were still being revised. This constant volatility begs the question of whether this data is in fact ‘real time’.
+
+Conceptually, too, the EPFO database has seen significant revisions. In August 2018, the EPFO started to report the number of subscribers who ceased their subscriptions and later ‘rejoined’ and ‘resubscribed’ to the database. This category has now been included in the net additions to databases implying that those who left a formal job and rejoined a formal job are counted as new formal jobs.
+
+This change in the definition of ‘net payroll’, five months since its inception has only compounded the confusion surrounding the database. Not only do these revisions highlight the fragility of this database, but they also give the sense that this database is still ‘work in progress’. Making claims of formalisation on this basis appears a bit premature.
+
+The larger issue, of course, is that the EPFO data cannot provide a holistic picture of the employment scenario.
+
+The ‘unorganised’ factor
+India’s labour markets are characterised by dualism, where a large unorganised sector coexists with a far smaller organised sector. According to the NSS’s 2011-12 employment survey, approximately 93 per cent of India’s workforce was engaged in informal jobs.
+
+In this backdrop, focusing the debate on a database which covers only the formal sector underestimates and deflects the enormity of the jobs challenge.
+
+Payroll data is an important indicator in advanced economies where the nature of employment challenge is substantially different from that of economies like India which are struggling with disguised unemployment. The true magnitude of the jobs crisis cannot be gauged without data from household surveys, which cover both the organised and unorganised sector. The excessive focus on the payroll data to simply produce high frequency data without providing insights into the quality of employment serves little purpose.
+
+Interestingly, the only data on employment available post 2015-16, is a privately conducted household survey by the CMIE. This survey shows the increase in employment between 2016 and 2017 to be a mere 1.4 million. A study prepared for the Prime Minister’s Economic Advisory Council, by Surjit Bhalla and Tirthatanmoy Das has argued that 12.8 million jobs have been created in 2017.
+
+The divergence in the two figures stems from the differences in estimates of labour force participation rate for women used by the two studies. This has led to a plethora of claims and counter-claims which have only made it harder to make sense of the jobs debate. Thus, the absence of credible government data has obstructed any meaningful analysis on the employment performance of the government. That this is happening in a pre-election year appears to be more than a mere coincidence.
+
+The writer is Senior Fellow, ICRIER
+
+
